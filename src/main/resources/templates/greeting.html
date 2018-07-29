@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <h2 th:inline=text>
+                    Hello, [[${name}]]!
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <p>And welcome to my website</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <button class="btn btn-primary m-4" type="button" data-toggle="collapse" data-target="#courses" aria-expanded="false" aria-controls="courses">
+                    University courses I've studied
+                </button>
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn-primary m-4" type="button" data-toggle="collapse" data-target="#languages" aria-expanded="false" aria-controls="languages">
+                    Programming languages I know
+                </button>
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn-primary m-4" type="button" data-toggle="collapse" data-target="#technologies" aria-expanded="false" aria-controls="technologies">
+                    Technologies I've used in industry
+                </button>
+            </div>
+        </div>
+        <div class="collapse" id="technologies" style="margin-top:4px">
+            <div class="card card-body" style="border: 2px solid grey; border-radius: 5px">
+                    <div th:each="technology : ${techSkills}">
+                        <h4 th:inline="text" style="padding-left: 4px">
+                            <strong>[[${technology.getHeading()}]]</strong>
+                        </h4>
+                        <p style="padding-left: 4px">
+                            [[${technology.getBody()}]]
+                        </p>
+                    </div>
+            </div>
+        </div>
+        <div class="collapse" id="languages" style="margin-top:4px">
+            <div class="card card-body" style="border: 2px solid grey; border-radius: 5px">
+                <div th:each="language : ${programmingLanguages}">
+                        <h4 th:inline="text" style="padding-left: 4px">
+                            <strong>[[${language.getHeading()}]]</strong>
+                        </h4>
+                        <p style="padding-left: 4px">
+                            [[${language.getBody()}]]
+                        </p>
+                </div>
+            </div>
+        </div>
+        <div class="collapse" id="courses" style="margin-top:4px">
+            <div class="card card-body" style="border: 2px solid grey; border-radius: 5px">
+                <div th:each="course : ${coursesStudied}">
+                    <h4 th:inline="text" style="padding-left: 4px">
+                        <strong>[[${course.getHeading()}]]</strong>
+                    </h4>
+                    <p style="padding-left: 4px">
+                        [[${course.getBody()}]]
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
