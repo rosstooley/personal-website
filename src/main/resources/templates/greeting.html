@@ -24,55 +24,23 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-4">
-                <button class="btn btn-primary m-4" type="button" data-toggle="collapse" data-target="#courses" aria-expanded="false" aria-controls="courses">
-                    University courses I've studied
-                </button>
-            </div>
-            <div class="col-sm-4">
-                <button class="btn btn-primary m-4" type="button" data-toggle="collapse" data-target="#languages" aria-expanded="false" aria-controls="languages">
-                    Programming languages I know
-                </button>
-            </div>
-            <div class="col-sm-4">
-                <button class="btn btn-primary m-4" type="button" data-toggle="collapse" data-target="#technologies" aria-expanded="false" aria-controls="technologies">
-                    Technologies I've used in industry
-                </button>
-            </div>
-        </div>
-        <div class="collapse" id="technologies" style="margin-top:4px">
-            <div class="card card-body" style="border: 2px solid grey; border-radius: 5px">
-                    <div th:each="technology : ${techSkills}">
-                        <h4 th:inline="text" style="padding-left: 4px">
-                            <strong>[[${technology.getHeading()}]]</strong>
-                        </h4>
-                        <p style="padding-left: 4px">
-                            [[${technology.getBody()}]]
-                        </p>
-                    </div>
-            </div>
-        </div>
-        <div class="collapse" id="languages" style="margin-top:4px">
-            <div class="card card-body" style="border: 2px solid grey; border-radius: 5px">
-                <div th:each="language : ${programmingLanguages}">
-                        <h4 th:inline="text" style="padding-left: 4px">
-                            <strong>[[${language.getHeading()}]]</strong>
-                        </h4>
-                        <p style="padding-left: 4px">
-                            [[${language.getBody()}]]
-                        </p>
+            <div th:each="card : ${cards}">
+                <div class="col-sm-4">
+                    <button class="btn btn-primary m-4" type="button" data-toggle="collapse" th:attr="data-target='#'+${card.getId()}" aria-expanded="false" th:attrappend="aria-controls=${card.getId()}" th:text="${card.getTitle()}"></button>
                 </div>
             </div>
         </div>
-        <div class="collapse" id="courses" style="margin-top:4px">
-            <div class="card card-body" style="border: 2px solid grey; border-radius: 5px">
-                <div th:each="course : ${coursesStudied}">
-                    <h4 th:inline="text" style="padding-left: 4px">
-                        <strong>[[${course.getHeading()}]]</strong>
-                    </h4>
-                    <p style="padding-left: 4px">
-                        [[${course.getBody()}]]
-                    </p>
+        <div th:each="card : ${cards}">
+            <div class="collapse" th:id="${card.getId()}" style="margin-top:4px">
+                <div class="card card-body" style="border: 2px solid grey; border-radius: 5px">
+                    <div th:each="line : ${card.getContent()}">
+                        <h4 th:inline="text" style="padding-left: 4px">
+                            <strong>[[${line.getHeading()}]]</strong>
+                        </h4>
+                        <p style="padding-left: 4px">
+                            [[${line.getBody()}]]
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

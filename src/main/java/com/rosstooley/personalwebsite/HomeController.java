@@ -1,5 +1,6 @@
 package com.rosstooley.personalwebsite;
 
+import com.rosstooley.personalwebsite.utils.CardPackage;
 import com.rosstooley.personalwebsite.utils.StringPair;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -150,13 +151,16 @@ public class HomeController {
     public String greeting(@RequestParam(name="name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
 
-        List<StringPair> techSkills = getTechSkills();
-        model.addAttribute("techSkills", techSkills);
-        List<StringPair> programmingLanguages = getProgrammingLanguages();
-        model.addAttribute("programmingLanguages", programmingLanguages);
-        List<StringPair> coursesStudied = getCoursesStudied();
-        model.addAttribute("coursesStudied", coursesStudied);
+        List<CardPackage> cards = new LinkedList<>();
 
+        List<StringPair> coursesStudied = getCoursesStudied();
+        cards.add(new CardPackage("courses","University courses I've studied", coursesStudied));
+        List<StringPair> programmingLanguages = getProgrammingLanguages();
+        cards.add(new CardPackage("languages","Programming languages I've learnt", programmingLanguages));
+        List<StringPair> techSkills = getTechSkills();
+        cards.add(new CardPackage("skills","Technologies I've used in industry", techSkills));
+
+        model.addAttribute("cards", cards);
         return "greeting";
     }
 }
