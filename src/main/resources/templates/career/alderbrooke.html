@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Alderbrooke Internship, Summer 2018</title>
+</head>
+<body>
+    <div class="container">
+        <h2><strong>Working for Alderbrooke</strong></h2>
+        <h4 class="mb-4">A software engineering internship in summer 2018</h4>
+        <p>
+            I, alongside <a href="https://campman.xyz">Max Campman</a>, joined Alderbrooke for 8 weeks over summer
+            after meeting their Chief Behavioural Scientist, Hani Nabeel. From that discussion we found out
+            that Alderbrooke had an amazing set of scientific products that used quantitative psychology to assess the
+            culture, talent and team dynamics of a company and improve them for the benefit of the company.
+        </p>
+        <p>
+            However, it was clear that Alderbrooke was struggling to
+            implement the technology needed to keep up with their customer's ever increasing demand. So the aim of our
+            internship was to completely overhaul the current production system of 'TalentScope', which was offline
+            and used third party software, and re-write it as a cloud-based web application that was able
+            to handle continuous processing and clients and analytics of their data.
+        </p>
+        <h4 style="padding-top:10px">
+            <strong>What was the start point?</strong>
+        </h4>
+        <p>
+            TalentScope is a tool used to assess a candidate's suitability for a job.
+            Candidates are put through a psychological exam to measure them to quantitatively assess their personality type.
+            The employer is also surveyed to produce a 'job profile' for the position.
+            The analysis section of the system then assessed the candidate through the filter of the job profile
+            and produced a final report of their suitability for the role.
+        </p>
+        <p>
+            A basic, 'offline' implementation of TalentScope was in operation. It surveyed the employer and
+            candidates by using FormStack, but could not implement the adaptive 'Item Response Theory' section of the questionnaire
+            which asked different questions depending on the previous responses, and was key to evaluating the
+            accuracy of the later analysis. The results of every response then had to be downloaded by an analyst, processed using Excel,
+            and reformatted into a report. This process would take 5-10 minutes per responder and
+            was very unpopular with the analysts!!
+        </p>
+        <h4 style="padding-top:10px">
+            <strong>What did we produce?</strong>
+        </h4>
+        <p>
+            In 5 weeks, the two of us produced our web-app replacement which combined all features of TalentScope into
+            one cloud-based platform:
+        </p>
+        <ul>
+            <li>
+                Questionnaires now implemented Item Response Theory, so the results of the
+                system were far more statistically significant.
+            </li>
+            <li>
+                Candidates and Job Profiles could now be associated to a company, so if a candidate could be
+                assessed for an alternative role if they did not suit the one they initially applied for
+            </li>
+            <li>
+                The web-app has a whole admin section that allows analysts to quickly manage companies, jobs and
+                candidates (including comply with GDPR);
+                distribute links for questionnaires; upload the questionnaires in multiple languages;
+                and most importantly generate reports immediately.
+            </li>
+            <li>
+                This admin site is secured against unauthorised access since the platform contains sensitive information.
+            </li>
+            <li>
+                Reports can be generated in one-click! Any candidate can be assessed for any job in the same company
+                using the same test results. Our analytics system provided immediate processing and report generation -
+                5 minutes down to no time at all!
+            </li>
+        </ul>
+        <h4 style="padding-top:10px">
+            <strong>What we learnt from this project</strong>
+        </h4>
+        <p>
+            When we started this project, we were strong programmers (especially in Java), great mathematicians, and
+            had studied a number of relevant theoretical courses such as Database Design, Software and Security Engineering,
+            Algorithms, and so on. But we had little web-development experience, not much team experience, and no industry
+            experience at all! Suddenly, we had users to gather requirements from; stakeholders who were dependant on its
+            success; expectations that it would work, be easy to use, be delivered on time. All of which with no other developers
+            in the company to show us the ropes - we were learning it all by ourselves!
+        </p>
+        <p>
+            Our first challenge was in getting the requirements. Alderbrooke is small and everyone is very busy so we had to approach
+            every meeting with a plan to get all the information we needed out of them. There was also a lot left to our 'good judgement'
+            which obviously required us to understand the product and decide what is best. One example was our decision to add the ability
+            to upload questions in other languages; CultureScope has already gone global and TalentScope could go that way soon and
+            so even though we were told to save time and not add it, the feature was really appreciated when we did it anyway!
+        </p>
+        <p>
+            Once we had the what, it was time to work out the 'how'. A full list of what we used is below and be assured we
+            taught ourselves how to use nearly everything on there in the 5 weeks! In fact, the list of technologies we
+            considered using is even longer (e.g. Scala, MongoDB, Python for NumPy...), so we were Tech Analysts, as well as
+            Product Owners, Architects, Developers, Testers and completed the deployment - the real Full Stack! For a few days we
+            did nothing but Google and Google until we understood how we were going to build this thing!
+        </p>
+        <h4 style="padding-top:10px">
+            <strong>Technologies we used</strong>
+        </h4>
+        <ul>
+            <li>Java</li>
+            <li>Spring Boot</li>
+            <li>Spring Security</li>
+            <li>
+                MySQL: we designed the database architecture, interaction with it and the app, and used an SQL
+                engine to efficiently compute stages of the analysis (especially aggregation calculation). I take
+                particular pride in how we designed our database to trade off normalisation for speed in some cases
+                that were going to be read-heavy (e.g. the data used map the analysis calculations), and make other parts
+                strongly normalised for high write-throughput.
+            </li>
+            <li>HTML, CSS, Bootstrap and Thymeleaf</li>
+            <li>JavaScript</li>
+            <li>Maven and Git for project management</li>
+            <li>JUnit: we built a full regression testing library for our system... and reaped the rewards!</li>
+            <li>AWS: EC2, Elastic Beanstalk, RDS, Certificate Manager</li>
+            <li>SSL certification to provide https protocol for the site</li>
+        </ul>
+    </div>
+</body>
+</html>
